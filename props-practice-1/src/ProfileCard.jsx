@@ -1,4 +1,4 @@
-function ProfileCard({name, age, isMember, hobbies}) {
+function ProfileCard({name, age, isMember, hobbies, onHobbyClick}) {
     return (
         <div className="profile-card">
             <h3>Name: {name}</h3>
@@ -6,7 +6,10 @@ function ProfileCard({name, age, isMember, hobbies}) {
             <h3>Status: {isMember ? "Active Member" : "Guest"}</h3>
             <ul>
                 {hobbies.map((hobby, index) => {
-                    return <li key={index}>{hobby}</li>;
+                    return <li key={index} 
+                                onClick={() => onHobbyClick(hobby)}>
+                                {hobby}
+                            </li>;
                 })}
             </ul>
         </div>
