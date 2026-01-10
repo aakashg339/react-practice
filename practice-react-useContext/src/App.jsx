@@ -8,12 +8,20 @@ import { useContext } from 'react'
 const ThemeContext = createContext('light');
 
 function App() {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
 
   return (
-    <div style={{border:'2px solid black'}}>
-      <h2>App component (Parent)</h2>
-      <ComponentA />
-    </div>
+    <ThemeContext.Provider value={theme}>
+      <div style={{border:'2px solid black'}}>
+        <h2>App component (Parent)</h2>
+        <button onClick={toggleTheme}>Toggle theme</button>
+        <ComponentA />
+      </div>
+    </ThemeContext.Provider>
   )
 }
 
