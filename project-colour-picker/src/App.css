@@ -1,4 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding: 0px;
+  padding-top: 40px;
+  min-height: 100vh;
+  color: #f0f0f0;
+}
+
+h1 {
+  color: #f0f0f0;
+}
+
+.colour-palette{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
 .colour-box {
   width: 50px;
   height: 50px;
+  cursor: pointer;
+  border: 2px solid #fff;
+}
+
+.custom-colour-picker input {
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.custom-colour-picker input:hover {
+  background-color: #555;
 }
