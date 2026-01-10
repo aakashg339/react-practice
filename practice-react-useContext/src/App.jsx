@@ -2,37 +2,42 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { createContext } from 'react'
+import { useContext } from 'react'
+
+const ThemeContext = createContext('light');
 
 function App() {
-  const theme = 'dark';
 
   return (
     <div style={{border:'2px solid black'}}>
       <h2>App component (Parent)</h2>
-      <ComponentA theme={theme} />
+      <ComponentA />
     </div>
   )
 }
 
-function ComponentA({theme}) {
+function ComponentA() {
   return (
     <div style={{border:'2px solid black'}}>
       <h2>ComponentA (child)</h2>
-      <ComponentB theme={theme} />
+      <ComponentB />
     </div>
   )
 }
 
-function ComponentB({theme}) {
+function ComponentB() {
   return (
     <div style={{border:'2px solid black'}}>
       <h2>ComponentB (grandchild)</h2>
-      <ThemedComponent theme={theme} />
+      <ThemedComponent />
     </div>
   )
 }
 
-function ThemedComponent({theme}) {
+function ThemedComponent() {
+  const theme = useContext(ThemeContext);
+
   return (
     <div style={{border:'2px solid black'}}>
       <h2>ThemedComponent (grandchild)</h2>
