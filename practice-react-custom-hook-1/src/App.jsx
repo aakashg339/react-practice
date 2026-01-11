@@ -2,7 +2,7 @@ import './App.css'
 import useCounter from './useCounter'
 
 function App() {
-  const {count, increment, decrement} = useCounter();
+  const {count, increment, decrement, reset} = useCounter(0);
 
   return (
     <div>
@@ -12,6 +12,9 @@ function App() {
       </button>
       <button onClick={decrement}>
         Decrement
+      </button>
+      <button onClick={reset}>
+        Reset
       </button>
     </div>
   )
