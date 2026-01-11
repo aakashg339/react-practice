@@ -14,7 +14,7 @@ function App() {
         setData(json);
         setLoading(false);
 
-        throw new Error('Something went wrong');
+        //throw new Error('Something went wrong');
       })
       .catch((e) => {
         console.error(`Error fetching data: ${e}`);
