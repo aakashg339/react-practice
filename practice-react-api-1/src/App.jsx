@@ -9,13 +9,18 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get('https://jsonplaceholder.typicode.com/posts')
-      .then(response => {
-        setData(response.data);
+    axios.all([
+      axios.get('https://jsonplaceholder.typicode.com/posts'),
+      axios.get('https://jsonplaceholder.typicode.com/users')
+    ])  
+      .then(axios.spread((post, users) => {
+        console.log(post);
+        console.log(users);
+        setData(post.data);
         setLoading(false);
 
         //throw new Error('Something went wrong');
-      })
+      }))
       .catch((e) => {
         console.error(`Error fetching data: ${e}`);
         setError('Unable to fetch the data');
