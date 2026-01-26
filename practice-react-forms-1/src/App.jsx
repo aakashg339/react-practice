@@ -4,10 +4,18 @@ import {useForm} from 'react-hook-form'
 
 function App() {
   const {register, handleSubmit, reset, watch, formState: {errors}} = useForm();
+  
   const onSubmit = (data) => {
     console.log("Form Data: ", data);
     reset();
   }
+
+  // const validateName = (value) => {
+  //   if(value !== 'admin') {
+  //     return 'Only admin is allowed';
+  //   }
+  //   return true;
+  // };
 
   // console.log(watch('name'));
 
@@ -33,7 +41,14 @@ function App() {
               {required: 'Name is required', 
                 minLength: {value: 2, 
                   message:'Name should be atleast 2 character'
-          }})} />
+                            },
+                // validate: validateName,
+                validate: {
+                  notAdmin: (value) => value !== "admin" || "Admin is not allowed",
+                  isNotNumber: (value) => isNaN(value) || "Name cannot be number",
+                }
+              }
+          )} />
         </label>
         {errors.name && <p>{errors.name.message}</p>}
 
