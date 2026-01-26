@@ -3,21 +3,24 @@ import './App.css'
 import {useForm} from 'react-hook-form'
 
 function App() {
-  const {register, handleSubmit, watch, formState: {errors}} = useForm();
-  const onSubmit = (data) => console.log(data);
+  const {register, handleSubmit, reset, watch, formState: {errors}} = useForm();
+  const onSubmit = (data) => {
+    console.log("Form Data: ", data);
+    reset();
+  }
 
   // console.log(watch('name'));
 
-  const watchedName = watch('name');
-  const watchedEmail = watch('email');
+  // const watchedName = watch('name');
+  // const watchedEmail = watch('email');
 
-  useEffect(() => {
-    console.log('Name ', watchedName);
-  }, [watchedName]);
+  // useEffect(() => {
+  //   console.log('Name ', watchedName);
+  // }, [watchedName]);
 
-  useEffect(() => {
-    console.log('Email ', watchedEmail);
-  }, [watchedEmail]);
+  // useEffect(() => {
+  //   console.log('Email ', watchedEmail);
+  // }, [watchedEmail]);
 
   return (
     <div>
@@ -41,6 +44,7 @@ function App() {
         {errors.email && <p>{errors.email.message}</p>}
 
         <button type='submit'>Submit</button>
+        <button type='button' onClick={() => reset()}>Reset</button>
       </form>
     </div>
   )
