@@ -1,3 +1,5 @@
+import { Link, Outlet } from "react-router-dom";
+
 function About() {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
@@ -7,6 +9,18 @@ function About() {
             <p 
                 className="text-gray-700 mt-4 text-lg">
                 Feel free to reach out to us through our contact form or email. We would love to hear from you.</p>
+            
+            <nav className="mt-6">
+                <ul className="flex space-x-4">
+                    <li><Link to="team" className="text-blue-500 hover:underline">Our Team</Link></li>
+                    <li><Link to="/" className="text-blue-500 hover:underline">Back to Home</Link></li>
+                </ul>
+            </nav>
+            
+            {/* Outlet for nested routes */}
+            <div className="mt-8 w-full max-w-4xl">
+                <Outlet />
+            </div>
         </div>
     )
 }
